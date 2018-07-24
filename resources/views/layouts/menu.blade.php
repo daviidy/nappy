@@ -65,7 +65,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#">
-        <img src="/edu/logo-coral.png" alt="" width="100">
+        <img src="/edu/nappy.jpeg" alt="" height="50">
       </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
