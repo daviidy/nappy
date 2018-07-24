@@ -16,7 +16,7 @@ class MissController extends Controller
      */
     public function index()
     {
-        $misses = Miss::orderBy('id','asc')->paginate(30);
+        $misses = Miss::orderBy('numero','asc')->paginate(30);
         return view('misses.index', ['misses' => $misses]);
 
     }
