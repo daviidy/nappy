@@ -104,6 +104,11 @@
                   </select>
                 </div>
                 <div style="display: none;" class="form-group">
+                  <select class="" name="notify_url">
+                    <option value="{{url('voting', $miss)}}">Désignation</option>
+                  </select>
+                </div>
+                <div style="display: none;" class="form-group">
                   <select class="" name="miss_id">
                     <option value="{{$miss->id}}">Id miss</option>
                   </select>
