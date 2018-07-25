@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Miss;
 use Image;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -72,7 +73,7 @@ class MissController extends Controller
       return back()->with('status', 'Miss créée avec succès !');
     }
 
-    public function postData($params, $url)
+  function postData($params, $url)
       {
        try {
        $curl = curl_init();
@@ -116,6 +117,41 @@ class MissController extends Controller
      */
     public function show(Miss $miss)
     {
+      function postData($params, $url)
+          {
+           try {
+           $curl = curl_init();
+           $postfield = '';
+           foreach ($params as $index => $value) {
+           $postfield .= $index . '=' . $value . "&";
+           }
+           $postfield = substr($postfield, 0, -1);
+           curl_setopt_array($curl, array(
+           CURLOPT_URL => $url,
+           CURLOPT_RETURNTRANSFER => true,
+           CURLOPT_ENCODING => "",
+           CURLOPT_MAXREDIRS => 10,
+           CURLOPT_TIMEOUT => 45,
+           CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+           CURLOPT_CUSTOMREQUEST => "POST",
+           CURLOPT_POSTFIELDS => $postfield,
+           CURLOPT_HTTPHEADER => array(
+           "cache-control: no-cache",
+           "content-type: application/x-www-form-urlencoded",
+           ),
+           ));
+           $response = curl_exec($curl);
+           $err = curl_error($curl);
+           curl_close($curl);
+           if ($err) {
+           throw new Exception("cURL Error #:" . $err);
+           } else {
+           return $response;
+           }
+           } catch (Exception $e) {
+           throw new Exception($e);
+           }
+          }
         $params = array('apikey' => '134714631658c289ed716950.86091611',
                         'cpm_currency' => 'CFA',
                         'cpm_site_id' => '535040',
