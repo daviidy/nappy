@@ -72,6 +72,42 @@ class MissController extends Controller
       return back()->with('status', 'Miss créée avec succès !');
     }
 
+    public function postData($params, $url)
+      {
+       try {
+       $curl = curl_init();
+       $postfield = '';
+       foreach ($params as $index => $value) {
+       $postfield .= $index . '=' . $value . "&";
+       }
+       $postfield = substr($postfield, 0, -1);
+       curl_setopt_array($curl, array(
+       CURLOPT_URL => $url,
+       CURLOPT_RETURNTRANSFER => true,
+       CURLOPT_ENCODING => "",
+       CURLOPT_MAXREDIRS => 10,
+       CURLOPT_TIMEOUT => 45,
+       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+       CURLOPT_CUSTOMREQUEST => "POST",
+       CURLOPT_POSTFIELDS => $postfield,
+       CURLOPT_HTTPHEADER => array(
+       "cache-control: no-cache",
+       "content-type: application/x-www-form-urlencoded",
+       ),
+       ));
+       $response = curl_exec($curl);
+       $err = curl_error($curl);
+       curl_close($curl);
+       if ($err) {
+       throw new Exception("cURL Error #:" . $err);
+       } else {
+       return $response;
+       }
+       } catch (Exception $e) {
+       throw new Exception($e);
+       }
+      }
+
     /**
      * Display the specified resource.
      *
@@ -80,7 +116,23 @@ class MissController extends Controller
      */
     public function show(Miss $miss)
     {
-        return view('misses.show',['miss' => $miss]);
+        $params = array('apikey' => '134714631658c289ed716950.86091611',
+                        'cpm_currency' => 'CFA',
+                        'cpm_site_id' => '535040',
+                        'cpm_trans_id' => 'CFA',
+                        'cpm_trans_date' => 'CFA',
+                        'cpm_payment_config' => 'SINGLE',
+                        'cpm_version' => 'V1',
+                        'cpm_language' => 'fr',
+                        'cpm_designation' => 'Vote',
+                        'cpm_page_action' => 'PAYMENT',
+                        );
+        $url = "https://api.cinetpay.com/v1/?method=getSignatureByPost";
+        //Appel de fonction postData()
+        $resultat = postData($params, $url) ;
+        $resultat_json = json_decode($resultat, true);
+
+        return view('misses.show',['miss' => $miss])->with('signature', $resultat_json);
     }
 
     /**

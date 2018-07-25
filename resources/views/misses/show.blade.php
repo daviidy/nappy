@@ -41,8 +41,68 @@
                 </div>
             </div>
             <div class="col-md-6">
-              <form method="post" enctype="multipart/form-data" action="{{ url('voting', $miss) }}">
+              <form method="post" enctype="multipart/form-data" action="https://secure.cinetpay.com/">
                 {{ csrf_field() }}
+                <div style="display: none;" class="form-group">
+                  <select class="" name="cpm_trans_id">
+                    <option value="{{Carbon::now()}}">trans id</option>
+                  </select>
+                </div>
+                <div style="display: none;" class="form-group">
+                  <select class="" name="cpm_amount">
+                    <option value="100">montant</option>
+                  </select>
+                </div>
+                <div style="display: none;" class="form-group">
+                  <select class="" name="cpm_currency">
+                    <option value="CFA">currency</option>
+                  </select>
+                </div>
+                <div style="display: none;" class="form-group">
+                  <select class="" name="cpm_site_id">
+                    <option value="535040">Id site</option>
+                  </select>
+                </div>
+                <div style="display: none;" class="form-group">
+                  <select class="" name="cpm_language">
+                    <option value="fr">language</option>
+                  </select>
+                </div>
+                <div style="display: none;" class="form-group">
+                  <select class="" name="cpm_version">
+                    <option value="V1">version</option>
+                  </select>
+                </div>
+                <div style="display: none;" class="form-group">
+                  <select class="" name="cpm_payment_config">
+                    <option value="SINGLE">payment config</option>
+                  </select>
+                </div>
+                <div style="display: none;" class="form-group">
+                  <select class="" name="cpm_page_action">
+                    <option value="PAYMENT">page action</option>
+                  </select>
+                </div>
+                <div style="display: none;" class="form-group">
+                  <select class="" name="cpm_trans_date">
+                    <option value="{{Carbon::now()}}">trans date</option>
+                  </select>
+                </div>
+                <div style="display: none;" class="form-group">
+                  <select class="" name="apikey">
+                    <option value="134714631658c289ed716950.86091611">api key</option>
+                  </select>
+                </div>
+                <div style="display: none;" class="form-group">
+                  <select class="" name="signature">
+                    <option value="{{session('signature')}}">Signature</option>
+                  </select>
+                </div>
+                <div style="display: none;" class="form-group">
+                  <select class="" name="cpm_designation">
+                    <option value="Vote">Désignation</option>
+                  </select>
+                </div>
                 <div style="display: none;" class="form-group">
                   <select class="" name="miss_id">
                     <option value="{{$miss->id}}">Id miss</option>
