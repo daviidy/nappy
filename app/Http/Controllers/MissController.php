@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Miss;
 use Image;
+use Carbon;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -116,11 +117,12 @@ class MissController extends Controller
            throw new Exception($e);
            }
           }
+          $time = Carbon::now();
         $params = array('apikey' => '134714631658c289ed716950.86091611',
                         'cpm_currency' => 'CFA',
                         'cpm_site_id' => '535040',
-                        'cpm_trans_id' => 'CFA',
-                        'cpm_trans_date' => 'CFA',
+                        'cpm_trans_id' => '1',
+                        'cpm_trans_date' => $time,
                         'cpm_payment_config' => 'SINGLE',
                         'cpm_version' => 'V1',
                         'cpm_language' => 'fr',
@@ -132,7 +134,7 @@ class MissController extends Controller
         $resultat = postData($params, $url) ;
         $resultat_json = json_decode($resultat, true);
 
-        return view('misses.show',['miss' => $miss])->with('signature', $resultat_json);
+        return view('misses.show',['miss' => $miss, 'time' => $time]);
     }
 
     /**

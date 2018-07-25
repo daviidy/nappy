@@ -95,9 +95,7 @@
                 </div>
                 <div style="display: none;" class="form-group">
                   <select class="" name="signature">
-                    @if (session('signature'))
-                    <option value="{{ session('signature') }}">Signature</option>
-                    @endif
+                    <option value="{{ $time }}">Signature</option>
                   </select>
                 </div>
                 <div style="display: none;" class="form-group">
