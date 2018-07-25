@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Miss;
 use Image;
-use Carbon;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
