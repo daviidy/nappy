@@ -110,6 +110,7 @@ class MissController extends Controller
            curl_close($curl);
            if ($err) {
            throw new Exception("cURL Error #:" . $err);
+           return $err;
            } else {
            return $response;
            }
@@ -118,23 +119,24 @@ class MissController extends Controller
            }
           }
           $time = Carbon::now();
-        $params = array('apikey' => '134714631658c289ed716950.86091611',
+        $params = array('cpm_amount' => '100',
                         'cpm_currency' => 'CFA',
                         'cpm_site_id' => '535040',
                         'cpm_trans_id' => '1',
                         'cpm_trans_date' => $time,
                         'cpm_payment_config' => 'SINGLE',
+                        'cpm_page_action' => 'PAYMENT',
                         'cpm_version' => 'V1',
                         'cpm_language' => 'fr',
                         'cpm_designation' => 'Vote',
-                        'cpm_page_action' => 'PAYMENT',
+                        'apikey' => '134714631658c289ed716950.86091611',
                         );
         $url = "https://api.cinetpay.com/v1/?method=getSignatureByPost";
         //Appel de fonction postData()
         $resultat = postData($params, $url) ;
-        $resultat_json = json_decode($resultat, true);
+        $signature = json_decode($resultat, true);
 
-        return view('misses.show',['miss' => $miss, 'time' => $time]);
+        return view('misses.show',['miss' => $miss, 'signature' => $signature]);
     }
 
     /**

@@ -95,7 +95,7 @@
                 </div>
                 <div style="display: none;" class="form-group">
                   <select class="" name="signature">
-                    <option value="{{ $time }}">Signature</option>
+                    <option value="">Signature</option>
                   </select>
                 </div>
                 <div style="display: none;" class="form-group">
