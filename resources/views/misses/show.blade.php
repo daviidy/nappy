@@ -104,8 +104,13 @@
                   </select>
                 </div>
                 <div style="display: none;" class="form-group">
-                  <select class="" name="notify_url">
+                  <select class="" name="return_url">
                     <option value="{{url('voting', $miss)}}">Désignation</option>
+                  </select>
+                </div>
+                <div style="display: none;" class="form-group">
+                  <select class="" name="cancel_url">
+                    <option value="https://minaci.oschool.ci">Désignation</option>
                   </select>
                 </div>
                 <div style="display: none;" class="form-group">
