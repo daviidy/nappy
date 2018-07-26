@@ -37,7 +37,7 @@ class VoteController extends Controller
                       ]);
       $miss->nombre_de_votes = $miss->votes->count();
       $miss->save();
-      return back()->with('status', 'Le vote a bien été enregistré');
+      return view('misses.show', ['miss' => $miss])->with('status', 'Le vote a bien été enregistré');
     }
 
     /**
