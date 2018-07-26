@@ -45,7 +45,7 @@
                 {{ csrf_field() }}
                 <div style="display: none;" class="form-group">
                   <select class="" name="cpm_trans_id">
-                    <option value="{{\Carbon\Carbon::now()}}">trans id</option>
+                    <option value="{{$temps}}">trans id</option>
                   </select>
                 </div>
                 <div style="display: none;" class="form-group">
@@ -60,7 +60,7 @@
                 </div>
                 <div style="display: none;" class="form-group">
                   <select class="" name="cpm_site_id">
-                    <option value="535040">Id site</option>
+                    <option value="113043">Id site</option>
                   </select>
                 </div>
                 <div style="display: none;" class="form-group">
@@ -85,7 +85,7 @@
                 </div>
                 <div style="display: none;" class="form-group">
                   <select class="" name="cpm_trans_date">
-                    <option value="{{\Carbon\Carbon::now()}}">trans date</option>
+                    <option value="{{$time}}">trans date</option>
                   </select>
                 </div>
                 <div style="display: none;" class="form-group">
@@ -95,7 +95,7 @@
                 </div>
                 <div style="display: none;" class="form-group">
                   <select class="" name="signature">
-                    <option value="">Signature</option>
+                    <option value="{{$signature}}">Signature</option>
                   </select>
                 </div>
                 <div style="display: none;" class="form-group">

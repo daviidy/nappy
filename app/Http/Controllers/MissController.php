@@ -100,6 +100,7 @@ class MissController extends Controller
            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
            CURLOPT_CUSTOMREQUEST => "POST",
            CURLOPT_POSTFIELDS => $postfield,
+           CURLOPT_SSL_VERIFYPEER => false,
            CURLOPT_HTTPHEADER => array(
            "cache-control: no-cache",
            "content-type: application/x-www-form-urlencoded",
@@ -119,10 +120,11 @@ class MissController extends Controller
            }
           }
           $time = Carbon::now();
+          $temps = date("YmdHis");
         $params = array('cpm_amount' => '100',
                         'cpm_currency' => 'CFA',
-                        'cpm_site_id' => '535040',
-                        'cpm_trans_id' => '1',
+                        'cpm_site_id' => '113043',
+                        'cpm_trans_id' => $temps,
                         'cpm_trans_date' => $time,
                         'cpm_payment_config' => 'SINGLE',
                         'cpm_page_action' => 'PAYMENT',
@@ -136,7 +138,11 @@ class MissController extends Controller
         $resultat = postData($params, $url) ;
         $signature = json_decode($resultat, true);
 
-        return view('misses.show',['miss' => $miss, 'signature' => $signature]);
+        return view('misses.show',['miss' => $miss,
+                                   'signature' => str_replace('"',"",$resultat),
+                                   'temps' => $temps,
+                                   'time' => $time,
+                                  ]);
     }
 
     /**
