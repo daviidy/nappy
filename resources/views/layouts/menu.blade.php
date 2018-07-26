@@ -25,6 +25,11 @@
     <title>Minaci 2018</title>
   </head>
   <body>
+    @if (session('vote'))
+        <div class="alert alert-success">
+            {{ session('vote') }}
+        </div>
+    @endif
     <div class="alert alert-info text-center alert-dismissible" style="margin-bottom: 0px;">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   <strong>Info !</strong> <a href="#" data-toggle="modal" data-target="#myModal2">Achetez vos tickets en ligne</a> , et bénéficiez d'une réduction de 40%
