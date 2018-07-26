@@ -119,16 +119,6 @@
                   <option value="https://minaci.oschool.ci">Désignation</option>
                 </select>
               </div>
-              <div style="display: none;" class="form-group">
-                <select class="" name="miss_id">
-                  <option value="{{$miss->id}}">Id miss</option>
-                </select>
-              </div>
-              <div style="display: none;" class="form-group">
-                <select class="" name="nombre_de_votes">
-                  <option value="1"></option>
-                </select>
-              </div>
               @if (session('vote'))
               <button type="submit" class="btn btn-primary">Voter encore</button>
               @else
