@@ -29,9 +29,12 @@ class VoteController extends Controller
         //
     }
 
-    public function voting(Request $request, Miss $miss)
+    public function voting(Miss $miss)
     {
-      $vote=Vote::create($request->all());
+      $vote=Vote::create([
+                        'nombre_de_votes' => '1',
+                        'miss_id' => $miss->id,
+                      ]);
       $miss->nombre_de_votes = $miss->votes->count();
       $miss->save();
       return back()->with('status', 'Le vote a bien été enregistré');
