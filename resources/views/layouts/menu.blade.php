@@ -32,7 +32,7 @@
     @endif
     <div class="alert alert-info text-center alert-dismissible" style="margin-bottom: 0px;">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-  <strong>Info !</strong> <a href="/send">Achetez vos tickets en ligne</a> , et bénéficiez d'une réduction de 40%
+  <strong>Info !</strong> <a href="{{ route('tickets.create') }}">Achetez vos tickets en ligne</a> , et bénéficiez d'une réduction de 40%
 </div>
 <div class="modal fade" id="myModal2" role="dialog">
 <div class="modal-dialog">
@@ -44,7 +44,8 @@
   <h4 class="modal-title">Remplissez ce formulaire pour acheter un ticket</h4>
 </div>
 <div class="modal-body">
-  <form enctype="multipart/form-data" action="/action_page.php">
+  <form enctype="multipart/form-data" action="{{ route('tickets.store') }}">
+    {{ csrf_field() }}
     <div class="form-group">
       <label for="email">Adresse Email:</label>
       <input type="email" name="email" class="form-control" id="email">

@@ -28,3 +28,5 @@ Route::post('voting/{miss}', 'VoteController@voting');
 Route::resource('misses','MissController');
 
 Route::resource('votes','VoteController');
+
+Route::resource('tickets','TicketController');

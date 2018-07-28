@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Ticket;
+use Mail;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
@@ -24,7 +25,7 @@ class TicketController extends Controller
      */
     public function create()
     {
-        //
+        return view('tickets.create');
     }
 
     /**
@@ -35,7 +36,14 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ticket=Ticket::create($request->all());
+
+        Mail::send(['text' => 'mails.mail'], ['ticket' => $ticket], function($message){
+          $message->to('davidyfreelance@gmail.com', 'A David')->subject('Test');
+          $message->from('minaci2018@gmail.com', 'Minaci');
+        });
+
+        return redirect('misses')->with('status', 'Mail envoyé');
     }
 
     /**
