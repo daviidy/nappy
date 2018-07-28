@@ -8,7 +8,7 @@
         <div class="content text-center">
             <h1>{{$miss->prenoms}} {{$miss->nom}}</h1>
 
-            @if (session('status'))
+            @if ($status == 1)
               <p class="lead">Merci pour votre vote !</p>
             @else
             <p class="lead">Voter pour {{$miss->prenoms}} {{$miss->nom}}</p>
@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title text-center">
-                  @if (session('status'))
+                  @if ($status == 1)
                     <h1>Merci pour votre vote</h1>
                   @else
                   <h1>Voter pour {{$miss->prenoms}} {{$miss->nom}}</h1>
@@ -105,15 +105,15 @@
                 </div>
                 <div style="display: none;" class="form-group">
                   <select class="" name="return_url">
-                    <option value="{{url('voting', $miss)}}">Désignation</option>
+                    <option value="{{url('voting', $miss)}}">url retour</option>
                   </select>
                 </div>
                 <div style="display: none;" class="form-group">
                   <select class="" name="cancel_url">
-                    <option value="https://minaci.oschool.ci">Désignation</option>
+                    <option value="https://minaci.oschool.ci">url cancel</option>
                   </select>
                 </div>
-                @if (session('status'))
+                @if ($status == 1)
                 <button type="submit" class="btn btn-primary">Voter encore</button>
                 @else
                 <button type="submit" class="btn btn-primary">Voter</button>

@@ -94,12 +94,14 @@ class VoteController extends Controller
         //Appel de fonction postData()
         $resultat = postData($params, $url) ;
         $signature = json_decode($resultat, true);
+        $status = 1;
 
         return view('misses.show',['miss' => $miss,
                                    'signature' => str_replace('"',"",$resultat),
                                    'temps' => $temps,
                                    'time' => $time,
-                                  ])->with('status', 'Le vote a bien été enregistré');
+                                   'status' => $status
+                                 ]);
     }
 
     /**

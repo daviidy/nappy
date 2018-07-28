@@ -25,10 +25,12 @@
     <title>Minaci 2018</title>
   </head>
   <body>
-    @if (session('vote'))
+    @if (session('status'))
         <div class="alert alert-success">
-            {{ session('vote') }}
+            {{ session('status') }}
         </div>
+    @else
+    <p>Pas de session</p>
     @endif
     <div class="alert alert-info text-center alert-dismissible" style="margin-bottom: 0px;">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -96,7 +98,7 @@
     </div>
   </div>
 </nav>
-    
+
 
     @yield('content')
 
