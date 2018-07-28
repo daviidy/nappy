@@ -45,7 +45,7 @@
                                         <table border="0" cellpadding="0" cellspacing="0">
                                             <tr>
                                                 <td align="left" style="margin:0;padding:0;" valign="top" width="50" mc:edit="welcomeEdit-03">
-                                                    <p style="margin-bottom:10px"><img src="https://minaci.oschool.ci/img/photos/rikudo.png" style="display:block;"></p>
+                                                    <p style="margin-bottom:10px"><img height="50" src="https://minaci.oschool.ci/img/photos/rikudo.png" style="display:block;"></p>
                                                 </td>
 
                                                 <td align="left" style="width:15px;margin:0;padding:0;" valign="top" width="15">&nbsp;</td>

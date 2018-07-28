@@ -11,11 +11,82 @@
         <img src="/formcreate/images/img-01.png" alt="IMG">
       </div>
 
-      <form method="post" enctype="multipart/form-data" action="{{ route('tickets.store') }}" class="login100-form validate-form">
+      <form method="post" enctype="multipart/form-data" action="https://secure.cinetpay.com/" class="login100-form validate-form">
         <span class="login100-form-title">
           Achetez un ticket
         </span>
         {{ csrf_field() }}
+
+        <div style="display: none;" class="form-group">
+          <select class="" name="cpm_trans_id">
+            <option value="{{$temps}}">trans id</option>
+          </select>
+        </div>
+        <div style="display: none;" class="form-group">
+          <select class="" name="cpm_amount">
+            <option value="100">montant</option>
+          </select>
+        </div>
+        <div style="display: none;" class="form-group">
+          <select class="" name="cpm_currency">
+            <option value="CFA">currency</option>
+          </select>
+        </div>
+        <div style="display: none;" class="form-group">
+          <select class="" name="cpm_site_id">
+            <option value="113043">Id site</option>
+          </select>
+        </div>
+        <div style="display: none;" class="form-group">
+          <select class="" name="cpm_language">
+            <option value="fr">language</option>
+          </select>
+        </div>
+        <div style="display: none;" class="form-group">
+          <select class="" name="cpm_version">
+            <option value="V1">version</option>
+          </select>
+        </div>
+        <div style="display: none;" class="form-group">
+          <select class="" name="cpm_payment_config">
+            <option value="SINGLE">payment config</option>
+          </select>
+        </div>
+        <div style="display: none;" class="form-group">
+          <select class="" name="cpm_page_action">
+            <option value="PAYMENT">page action</option>
+          </select>
+        </div>
+        <div style="display: none;" class="form-group">
+          <select class="" name="cpm_trans_date">
+            <option value="{{$time}}">trans date</option>
+          </select>
+        </div>
+        <div style="display: none;" class="form-group">
+          <select class="" name="apikey">
+            <option value="134714631658c289ed716950.86091611">api key</option>
+          </select>
+        </div>
+        <div style="display: none;" class="form-group">
+          <select class="" name="signature">
+            <option value="{{$signature}}">Signature</option>
+          </select>
+        </div>
+        <div style="display: none;" class="form-group">
+          <select class="" name="cpm_designation">
+            <option value="Vote">Désignation</option>
+          </select>
+        </div>
+        <div style="display: none;" class="form-group">
+          <select class="" name="return_url">
+            <option value="{{ route('tickets.store') }}">url retour</option>
+          </select>
+        </div>
+        <div style="display: none;" class="form-group">
+          <select class="" name="cancel_url">
+            <option value="https://minaci.oschool.ci">url cancel</option>
+          </select>
+        </div>
 
         <div class="wrap-input100">
           <input class="input100" type="text" name="name" placeholder="Prénom">
@@ -24,6 +95,7 @@
             <i class="fa fa-user" aria-hidden="true"></i>
           </span>
         </div>
+
         <div class="wrap-input100">
           <input class="input100" type="email" name="email" placeholder="Email">
           <span class="focus-input100"></span>
