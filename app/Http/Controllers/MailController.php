@@ -13,7 +13,7 @@ class MailController extends Controller
 
       Mail::send(['text' => 'mails.mail'], ['name', 'Minaci'], function($message){
         $message->to('davidyfreelance@gmail.com', 'A David')->subject('Test');
-        $message->from('yaodavidarmel@gmail.com', 'Minaci');
+        $message->from('minaci2018@gmail.com', 'Minaci');
       });
 
       return redirect('misses')->with('status', 'Mail envoyé');
