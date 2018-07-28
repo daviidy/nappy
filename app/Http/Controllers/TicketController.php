@@ -38,12 +38,12 @@ class TicketController extends Controller
     {
         $ticket=Ticket::create($request->all());
 
-        Mail::send('mails.mail', ['ticket' => $ticket], function($message){
-          $message->to('davidyfreelance@gmail.com', 'A David')->subject('Test');
+        Mail::send('mails.mail', ['ticket' => $ticket], function($message) use ($ticket){
+          $message->to($ticket->email, 'A David')->subject('Test');
           $message->from('minaci2018@gmail.com', 'Minaci');
         });
 
-        return redirect('misses')->with('status', 'Mail envoyé');
+        return redirect('misses')->with('status', 'Achat validé ! Votre ticket a été envoyé dans votre boîte de réception. Merci de la consulter.');
     }
 
     /**

@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddNumeroToMissesTable extends Migration
+class AddNameFieldToTicketsTable extends Migration
 {
     /**
-     * Run the migrations. 
+     * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        Schema::table('misses', function (Blueprint $table) {
-            $table->double('numero')->default('1');
+        Schema::table('tickets', function (Blueprint $table) {
+            $table->string('name')->default('David');
         });
     }
 
@@ -25,8 +25,8 @@ class AddNumeroToMissesTable extends Migration
      */
     public function down()
     {
-        Schema::table('misses', function (Blueprint $table) {
-            $table->dropColumn('numero');
+        Schema::table('tickets', function (Blueprint $table) {
+            $table->dropColumn('name');
         });
     }
 }

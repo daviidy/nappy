@@ -18,10 +18,17 @@
         {{ csrf_field() }}
 
         <div class="wrap-input100">
-          <input class="input100" type="email" name="email" placeholder="Exemple : test@example.com">
+          <input class="input100" type="text" name="name" placeholder="Prénom">
           <span class="focus-input100"></span>
           <span class="symbol-input100">
             <i class="fa fa-user" aria-hidden="true"></i>
+          </span>
+        </div>
+        <div class="wrap-input100">
+          <input class="input100" type="email" name="email" placeholder="Email">
+          <span class="focus-input100"></span>
+          <span class="symbol-input100">
+            <i class="fa fa-ticket" aria-hidden="true"></i>
           </span>
         </div>
         <div class="container-login100-form-btn">
