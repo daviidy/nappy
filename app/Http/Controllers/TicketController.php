@@ -38,7 +38,7 @@ class TicketController extends Controller
     {
         $ticket=Ticket::create($request->all());
 
-        Mail::send(['text' => 'mails.mail'], ['ticket' => $ticket], function($message){
+        Mail::send('mails.mail', ['ticket' => $ticket], function($message){
           $message->to('davidyfreelance@gmail.com', 'A David')->subject('Test');
           $message->from('minaci2018@gmail.com', 'Minaci');
         });
