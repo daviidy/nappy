@@ -34,7 +34,8 @@ class VoteController extends Controller
       $vote=Vote::create($request->all());
       $miss->nombre_de_votes = $miss->votes->count();
       $miss->save();
-      return view('misses.index', ['miss' => $miss])->with('vote', 'Le vote a bien été enregistré');
+      $misses = Miss::orderBy('numero','asc')->paginate(30);
+      return view('misses.index', ['miss' => $miss, 'misses' => $misses])->with('vote', 'Le vote a bien été enregistré');
     }
 
     /**
