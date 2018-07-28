@@ -113,7 +113,7 @@
                     <option value="https://minaci.oschool.ci">Désignation</option>
                   </select>
                 </div>
-                @if (session('vote'))
+                @if (session('status'))
                 <button type="submit" class="btn btn-primary">Voter encore</button>
                 @else
                 <button type="submit" class="btn btn-primary">Voter</button>

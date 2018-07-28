@@ -30,9 +30,9 @@
     <![endif]-->
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar">
-  @if (session('vote'))
+  @if (session('status'))
       <div class="alert alert-success alert-dismissible">
-          {{ session('vote') }}
+          {{ session('status') }}
       </div>
   @endif
 <div id="main-wrapper">

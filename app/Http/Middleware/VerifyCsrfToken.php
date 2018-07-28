@@ -12,6 +12,9 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        'voting/{miss}'
+      'https://secure.cinetpay.com/notifypay',
+      'https://secure.cinetpay.com/*',
+      'https://cinetpay.com/*',
+      'voting/*'
     ];
 }

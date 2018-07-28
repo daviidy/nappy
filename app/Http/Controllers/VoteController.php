@@ -31,7 +31,7 @@ class VoteController extends Controller
         //
     }
 
-    public function voting(Request $request, Miss $miss)
+    public function voting(Miss $miss)
     {
       $vote=Vote::create([
                         'miss_id' => $miss->id,
@@ -99,7 +99,7 @@ class VoteController extends Controller
                                    'signature' => str_replace('"',"",$resultat),
                                    'temps' => $temps,
                                    'time' => $time,
-                                  ])->with('vote', 'Le vote a bien été enregistré');
+                                  ])->with('status', 'Le vote a bien été enregistré');
     }
 
     /**
