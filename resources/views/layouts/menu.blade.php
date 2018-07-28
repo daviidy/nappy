@@ -29,8 +29,6 @@
         <div class="alert alert-success">
             {{ session('status') }}
         </div>
-    @else
-    <p>Pas de session</p>
     @endif
     <div class="alert alert-info text-center alert-dismissible" style="margin-bottom: 0px;">
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
