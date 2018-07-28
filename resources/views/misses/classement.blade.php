@@ -1,38 +1,66 @@
-@extends('layouts.header-facture')
-@section('title', 'Classement')
-
+@extends('layouts.menu')
 @section('content')
-
-<h1 class="text-center">Classement</h1><br><br>
-
-<div class="table100 ver1 m-b-110">
-  <div class="table100-head">
-    <table>
-      <thead>
-        <tr class="row100 head">
-          <th class="cell100 column1">Photo</th>
-          <th class="cell100 column2">Prénoms</th>
-          <th class="cell100 column3">Nom</th>
-          <th class="cell100 column4">Nombre de votes</th>
-        </tr>
-      </thead>
-    </table>
-  </div>
-
-  <div class="table100-body js-pscroll">
-    <table>
-      <tbody>
+	<style type="text/css">
+		body{
+			margin: 0;
+		}
+		#main{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.rank-list{
+			width: 600px;
+		}
+		.rank-row{
+			border-bottom: 1.6px solid #EEE;
+		    padding-top: 10px;
+		    margin-top: 10px;
+		    padding: 5px;
+		}
+		.miss-card{
+			display: flex;
+			padding: 5px;
+			position: relative;
+		}
+		.miss-name, .miss-surname{
+			font-size: 1.5em;
+			margin-top: 20px;
+		}
+		.miss-desc{
+			max-width: 80%;
+			overflow: hidden;
+			word-break: break-all;
+			margin-left: 10px;
+		}
+		.miss-rank{
+			background: #BE63B4;
+		    padding: 1px 12px 1px 12px;
+		    color: #fff;
+		    position: absolute;
+		    right: 0;
+		    font-weight: bold;
+		}
+	</style>
+		<div id="main" class="container">
+			<div class="rank-list">
         @foreach($misses as $miss)
-        <tr class="row100 body">
-          <td class="cell100 column1"><img src="/img/photos/{{$miss->image}}" width="50" alt=""></td>
-          <td class="cell100 column2">{{$miss->prenoms}}</td>
-          <td class="cell100 column3">{{$miss->nom}}</td>
-          <td class="cell100 column4"><strong>{{$miss->nombre_de_votes}} vote(s)</strong></td>
-        </tr>
+				<div class="rank-row">
+					<div class="miss-card">
+						<div class="miss-pic" width="100">
+							<img height="100" src="/img/photos/{{$miss->image}}">
+						</div>
+						<div class="miss-desc">
+							<div class="miss-name">{{$miss->prenoms}}</div>
+							<div class="miss-surname">{{$miss->nom}}</div>
+						</div>
+						<span class="miss-rank">{{$miss->nombre_de_votes}} vote(s)</span>
+					</div>
+				</div>
         @endforeach
-      </tbody>
-    </table>
-  </div>
-</div>
 
-@endsection
+				</div>
+			</div>
+		</div>
+
+    @endsection
