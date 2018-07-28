@@ -6,7 +6,8 @@
 <div class="left-col-block blocks">
     <header class="header">
         <div class="content text-center">
-            <h1>{{$miss->prenoms}} {{$miss->nom}}</h1>
+            <h1>{{$miss->prenoms}} {{$miss->nom}}</h1><br>
+            <h1>{{$miss->votes->count()}} vote(s)</h1>
 
             @if ($status == 1)
               <p class="lead">Merci pour votre vote !</p>
