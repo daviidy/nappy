@@ -96,11 +96,7 @@
     </div>
   </div>
 </nav>
-    @if (session('status'))
-        <div class="alert alert-success alert-dismissible">
-            {{ session('status') }}
-        </div>
-    @endif
+    
 
     @yield('content')
 

@@ -30,6 +30,11 @@
     <![endif]-->
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar">
+  @if (session('vote'))
+      <div class="alert alert-success alert-dismissible">
+          {{ session('vote') }}
+      </div>
+  @endif
 <div id="main-wrapper">
 <!-- Page Preloader -->
 <div id="preloader">
