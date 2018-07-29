@@ -179,7 +179,11 @@ class TicketController extends Controller
                          'email' => Session::get('email')
                        ]);
        Mail::send('mails.mail', ['ticket' => $ticket], function($message) use ($ticket){
-         $message->to($ticket->email, 'A David')->subject('Votre ticket pour Minaci 2018');
+         $message->to($ticket->email, 'Cher participant')->subject('Votre ticket pour Minaci 2018');
+         $message->from('minaci2018@gmail.com', 'Minaci');
+       });
+       Mail::send('mails.mail-admin', ['ticket' => $ticket], function($message) use ($ticket){
+         $message->to('yaodavidarmel@gmail.com', 'A David')->subject('Notification pour nouvel achat de ticket');
          $message->from('minaci2018@gmail.com', 'Minaci');
        });
        return redirect('misses')->with('status', 'Achat validé ! Votre ticket a été envoyé dans votre boîte de réception. Merci de la consulter.');
