@@ -80,7 +80,7 @@ class VoteController extends Controller
           $temps = date("YmdHis");
         $params = array('cpm_amount' => '100',
                         'cpm_currency' => 'CFA',
-                        'cpm_site_id' => '113043',
+                        'cpm_site_id' => '535040',
                         'cpm_trans_id' => $temps,
                         'cpm_trans_date' => $time,
                         'cpm_payment_config' => 'SINGLE',
