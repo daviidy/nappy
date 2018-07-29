@@ -77,11 +77,19 @@
             <option value="Vote">Désignation</option>
           </select>
         </div>
+        @if(Session::has('name') && Session::has('email'))
+        @php
+        $requests = array("name" => Session::get('name'),
+                          "email" => Session::get('email')
+                          );
+        @endphp
+        {{var_dump($requests)}}
         <div style="display: none;" class="form-group">
           <select class="" name="return_url">
-            <option value="{{ route('tickets.store') }}">url retour</option>
+            <option value="{{url('achat')}}">url retour</option>
           </select>
         </div>
+        @endif
         <div style="display: none;" class="form-group">
           <select class="" name="cancel_url">
             <option value="https://minaci.oschool.ci">url cancel</option>

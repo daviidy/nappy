@@ -7,6 +7,7 @@ use Mail;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class TicketController extends Controller
 {
@@ -27,6 +28,8 @@ class TicketController extends Controller
      */
     public function create()
     {
+      Session::put('name', $request['name']);
+      Session::put('email', $request['email']);
       function postData($params, $url)
           {
            try {
@@ -97,15 +100,91 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        $ticket=Ticket::create($request->all());
 
-        Mail::send('mails.mail', ['ticket' => $ticket], function($message) use ($ticket){
-          $message->to($ticket->email, 'A David')->subject('Test');
-          $message->from('minaci2018@gmail.com', 'Minaci');
-        });
+        Session::put('name', $request['name']);
+        Session::put('email', $request['email']);
+        function postData($params, $url)
+            {
+             try {
+             $curl = curl_init();
+             $postfield = '';
+             foreach ($params as $index => $value) {
+             $postfield .= $index . '=' . $value . "&";
+             }
+             $postfield = substr($postfield, 0, -1);
+             curl_setopt_array($curl, array(
+             CURLOPT_URL => $url,
+             CURLOPT_RETURNTRANSFER => true,
+             CURLOPT_ENCODING => "",
+             CURLOPT_MAXREDIRS => 10,
+             CURLOPT_TIMEOUT => 45,
+             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+             CURLOPT_CUSTOMREQUEST => "POST",
+             CURLOPT_POSTFIELDS => $postfield,
+             CURLOPT_SSL_VERIFYPEER => false,
+             CURLOPT_HTTPHEADER => array(
+             "cache-control: no-cache",
+             "content-type: application/x-www-form-urlencoded",
+             ),
+             ));
+             $response = curl_exec($curl);
+             $err = curl_error($curl);
+             curl_close($curl);
+             if ($err) {
+             throw new Exception("cURL Error #:" . $err);
+             return $err;
+             } else {
+             return $response;
+             }
+             } catch (Exception $e) {
+             throw new Exception($e);
+             }
+            }
+            $time = Carbon::now();
+            $temps = date("YmdHis");
+          $params = array('cpm_amount' => '100',
+                          'cpm_currency' => 'CFA',
+                          'cpm_site_id' => '113043',
+                          'cpm_trans_id' => $temps,
+                          'cpm_trans_date' => $time,
+                          'cpm_payment_config' => 'SINGLE',
+                          'cpm_page_action' => 'PAYMENT',
+                          'cpm_version' => 'V1',
+                          'cpm_language' => 'fr',
+                          'cpm_designation' => 'Vote',
+                          'apikey' => '134714631658c289ed716950.86091611',
+                          );
+          $url = "https://api.cinetpay.com/v1/?method=getSignatureByPost";
+          //Appel de fonction postData()
+          $resultat = postData($params, $url) ;
+          $signature = json_decode($resultat, true);
 
-        return redirect('misses')->with('status', 'Achat validé ! Votre ticket a été envoyé dans votre boîte de réception. Merci de la consulter.');
+          return view('tickets.create',['signature' => str_replace('"',"",$resultat),
+                                       'temps' => $temps,
+                                       'time' => $time,
+                                     ]);
     }
+
+    /**
+     * Si l'achat du ticket est validé, mettre statu à 1
+     *
+     * @param  \App\Ticket  $ticket
+     * @return \Illuminate\Http\Response
+     */
+
+     public function achat()
+     {
+       $ticket=Ticket::create([
+                         'name' => Session::get('name'),
+                         'email' => Session::get('email')
+                       ]);
+       Mail::send('mails.mail', ['ticket' => $ticket], function($message) use ($ticket){
+         $message->to($ticket->email, 'A David')->subject('Test');
+         $message->from('minaci2018@gmail.com', 'Minaci');
+       });
+       return redirect('misses')->with('status', 'Achat validé ! Votre ticket a été envoyé dans votre boîte de réception. Merci de la consulter.');
+
+     }
 
     /**
      * Display the specified resource.

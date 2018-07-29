@@ -16,6 +16,7 @@ class VerifyCsrfToken extends Middleware
       'https://secure.cinetpay.com/*',
       'https://cinetpay.com/*',
       'voting/*',
-      'tickets'
+      'tickets',
+      'achat'
     ];
 }

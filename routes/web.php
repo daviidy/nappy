@@ -25,6 +25,8 @@ Route::get('/classement', 'MissController@classement');
 
 Route::post('voting/{miss}', 'VoteController@voting');
 
+Route::post('achat', 'TicketController@achat');
+
 Route::resource('misses','MissController');
 
 Route::resource('votes','VoteController');
