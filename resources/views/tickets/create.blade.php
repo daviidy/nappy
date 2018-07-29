@@ -13,7 +13,7 @@
 
       <form method="post" enctype="multipart/form-data" action="https://secure.cinetpay.com/" class="login100-form validate-form">
         <span class="login100-form-title">
-          Achetez un ticket
+          Le ticket coûte 6.000 FCFA
         </span>
         {{ csrf_field() }}
 
@@ -78,12 +78,12 @@
           </select>
         </div>
         @if(Session::has('name') && Session::has('email'))
-        @php
+      <!--  @php
         $requests = array("name" => Session::get('name'),
                           "email" => Session::get('email')
                           );
         @endphp
-        {{var_dump($requests)}}
+        {{var_dump($requests)}}-->
         <div style="display: none;" class="form-group">
           <select class="" name="return_url">
             <option value="{{url('achat')}}">url retour</option>
@@ -96,7 +96,7 @@
           </select>
         </div>
 
-        <div class="wrap-input100">
+      <!--  <div class="wrap-input100">
           <input class="input100" type="text" name="name" placeholder="Prénom">
           <span class="focus-input100"></span>
           <span class="symbol-input100">
@@ -110,10 +110,10 @@
           <span class="symbol-input100">
             <i class="fa fa-ticket" aria-hidden="true"></i>
           </span>
-        </div>
+        </div> -->
         <div class="container-login100-form-btn">
           <button class="login100-form-btn">
-            Achetez le ticket
+            Confirmer l'achat du ticket
           </button>
         </div>
 
