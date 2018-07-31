@@ -9,11 +9,7 @@
             <h1>{{$miss->prenoms}} {{$miss->nom}}</h1><br>
             <h1>{{$miss->votes->count()}} vote(s)</h1>
 
-            @if ($status == 1)
-              <p class="lead">Merci pour votre vote !</p>
-            @else
             <p class="lead">Voter pour {{$miss->prenoms}} {{$miss->nom}}</p>
-            @endif
             <ul class="social-icon">
                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                 <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
@@ -34,11 +30,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="section-title text-center">
-                  @if ($status == 1)
-                    <h1>Merci pour votre vote</h1>
-                  @else
                   <h1>Voter pour {{$miss->prenoms}} {{$miss->nom}}</h1>
-                  @endif
                 </div>
             </div>
             <div class="col-md-6">
@@ -115,11 +107,7 @@
                     <option value="https://minaci.oschool.ci">url cancel</option>
                   </select>
                 </div>
-                @if ($status == 1)
-                <button type="submit" class="btn btn-primary">Voter encore</button>
-                @else
                 <button type="submit" class="btn btn-primary">Voter</button>
-                @endif
               </form>
             </div>
             <div class="col-md-6">
