@@ -34,9 +34,9 @@ class VoteController extends Controller
 
     public function voting(Miss $miss)
     {
-      if (URL::previous() !== "https://cinetpay.com/notifypay") {
+    /*  if (URL::previous() !== "https://cinetpay.com/notifypay") {
       return redirect('misses');
-      }
+    } */
 
       return redirect('true')->with('miss', $miss);
 
