@@ -82,7 +82,7 @@ class MissController extends Controller
      */
     public function show(Miss $miss)
     {
-    
+
       function postData($params, $url)
           {
            try {
@@ -139,7 +139,10 @@ class MissController extends Controller
         $resultat = postData($params, $url) ;
         $signature = json_decode($resultat, true);
 
-        return view('misses.show', ['miss' => $miss]);
+        return view('misses.show', ['miss' => $miss
+                                    'signature' => str_replace('"',"",$resultat),
+                                    'temps' => $temps,
+                                    'time' => $time,]);
     }
 
     /**
