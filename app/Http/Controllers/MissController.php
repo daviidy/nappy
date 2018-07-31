@@ -84,7 +84,7 @@ class MissController extends Controller
     {
 
 
-        return view('misses.show', ['miss', $miss]);
+        return view('misses.show', ['miss' => $miss]);
     }
 
     /**
