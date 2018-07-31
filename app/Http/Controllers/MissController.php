@@ -140,7 +140,7 @@ class MissController extends Controller
         $signature = json_decode($resultat, true);
         $vraisignature = str_replace('"',"",$resultat);
 
-        return view('misses.show', ['miss' => $miss
+        return view('misses.show', ['miss' => $miss,
                                     'signature' => $vraisignature,
                                     'temps' => $temps,
                                     'time' => $time,]);
