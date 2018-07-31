@@ -69,7 +69,7 @@ class TicketController extends Controller
           }
           $time = Carbon::now();
           $temps = date("YmdHis");
-        $params = array('cpm_amount' => '100',
+        $params = array('cpm_amount' => '12000',
                         'cpm_currency' => 'CFA',
                         'cpm_site_id' => '535040',
                         'cpm_trans_id' => $temps,
@@ -142,7 +142,7 @@ class TicketController extends Controller
             }
             $time = Carbon::now();
             $temps = date("YmdHis");
-          $params = array('cpm_amount' => '100',
+          $params = array('cpm_amount' => '12000',
                           'cpm_currency' => 'CFA',
                           'cpm_site_id' => '535040',
                           'cpm_trans_id' => $temps,
