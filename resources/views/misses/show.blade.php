@@ -89,7 +89,7 @@
                 </div>
                 <div style="display: none;" class="form-group">
                   <select class="" name="signature">
-                    <option value="{{$signature}}">Signature</option>
+                    <option value="{{$vraisignature}}">Signature</option>
                   </select>
                 </div>
                 <div style="display: none;" class="form-group">

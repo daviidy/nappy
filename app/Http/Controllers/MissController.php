@@ -138,9 +138,10 @@ class MissController extends Controller
         //Appel de fonction postData()
         $resultat = postData($params, $url) ;
         $signature = json_decode($resultat, true);
+        $vraisignature = str_replace('"',"",$resultat);
 
         return view('misses.show', ['miss' => $miss
-                                    'signature' => str_replace('"',"",$resultat),
+                                    'signature' => $vraisignature,
                                     'temps' => $temps,
                                     'time' => $time,]);
     }
