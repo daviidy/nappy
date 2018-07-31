@@ -7,7 +7,7 @@ use App\Miss;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Routing\UrlGenerator;
+use Illuminate\Support\Facades\URL;
 
 class VoteController extends Controller
 {
