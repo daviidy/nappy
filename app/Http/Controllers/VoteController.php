@@ -38,11 +38,20 @@ class VoteController extends Controller
       return redirect('misses');
     } */
 
-      return redirect('true')->with('miss', $miss);
+      $vote=Vote::create([
+                        'miss_id' => $miss->id,
+                        'nombre_de_votes' => '1',
+                      ]);
+      $miss->nombre_de_votes = $miss->votes->count();
+      $miss->save();
+
+      return redirect('misses')->with('status', 'Votre vote a bien été enregistré !');
+
+    /*  return redirect('true')->with('miss', $miss); */
 
     }
 
-    public function true()
+    public function true($miss)
     {
       $vote=Vote::create([
                         'miss_id' => $miss->id,
@@ -107,12 +116,14 @@ class VoteController extends Controller
         $signature = json_decode($resultat, true);
         $status = 1;
 
-        return view('misses.show',['miss' => $miss,
+
+        /*return view('misses.show',['miss' => $miss,
                                    'signature' => str_replace('"',"",$resultat),
                                    'temps' => $temps,
                                    'time' => $time,
                                    'status' => $status
-                                 ]);
+                                 ]);*/
+        return redirect('misses')->with('status', 'Votre vote a bien été enregistré !');
     }
 
     /**

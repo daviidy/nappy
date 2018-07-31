@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('true', 'VoteController@true')->name('true');
+Route::get('true/{miss}', 'VoteController@true')->name('true');
 
 Route::get('/', function () {
     return redirect('misses');
