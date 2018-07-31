@@ -141,7 +141,7 @@ class MissController extends Controller
         $vraisignature = str_replace('"',"",$resultat);
 
         return view('misses.show', ['miss' => $miss,
-                                    'signature' => $vraisignature,
+                                    'signature' => str_replace('"',"",$resultat),
                                     'temps' => $temps,
                                     'time' => $time,]);
     }
