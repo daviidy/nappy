@@ -74,7 +74,7 @@
         </div>
         <div style="display: none;" class="form-group">
           <select class="" name="cpm_designation">
-            <option value="Vote">Désignation</option>
+            <option value="Ticket">Désignation</option>
           </select>
         </div>
         @if(Session::has('name') && Session::has('email'))

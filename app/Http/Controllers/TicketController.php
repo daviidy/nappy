@@ -78,7 +78,7 @@ class TicketController extends Controller
                         'cpm_page_action' => 'PAYMENT',
                         'cpm_version' => 'V1',
                         'cpm_language' => 'fr',
-                        'cpm_designation' => 'Vote',
+                        'cpm_designation' => 'Ticket',
                         'apikey' => '134714631658c289ed716950.86091611',
                         );
         $url = "https://api.cinetpay.com/v1/?method=getSignatureByPost";
@@ -151,7 +151,7 @@ class TicketController extends Controller
                           'cpm_page_action' => 'PAYMENT',
                           'cpm_version' => 'V1',
                           'cpm_language' => 'fr',
-                          'cpm_designation' => 'Vote',
+                          'cpm_designation' => 'Ticket',
                           'apikey' => '134714631658c289ed716950.86091611',
                           );
           $url = "https://api.cinetpay.com/v1/?method=getSignatureByPost";
