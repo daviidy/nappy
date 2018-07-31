@@ -23,7 +23,9 @@ Route::get('/ticket-recu', function () {
 
 Route::get('/classement', 'MissController@classement');
 
-Route::post('voting/{miss}', '/');
+Route::post('voting/{miss}', function () {
+    return view('misses.index');
+});
 
 Route::post('achat', 'TicketController@achat');
 
