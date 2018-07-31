@@ -34,9 +34,6 @@ class VoteController extends Controller
 
     public function voting(Miss $miss)
     {
-    /*  if (URL::previous() !== "https://cinetpay.com/notifypay") {
-      return redirect('misses');
-    } */
 
       $vote=Vote::create([
                         'miss_id' => $miss->id,
@@ -47,84 +44,9 @@ class VoteController extends Controller
 
       return redirect('misses')->with('status', 'Votre vote a bien été enregistré. Mais vous pouvez voter encore !');
 
-    /*  return redirect('true')->with('miss', $miss); */
 
     }
 
-    public function true($miss)
-    {
-      $vote=Vote::create([
-                        'miss_id' => $miss->id,
-                        'nombre_de_votes' => '1',
-                      ]);
-      $miss->nombre_de_votes = $miss->votes->count();
-      $miss->save();
-      function postData($params, $url)
-          {
-           try {
-           $curl = curl_init();
-           $postfield = '';
-           foreach ($params as $index => $value) {
-           $postfield .= $index . '=' . $value . "&";
-           }
-           $postfield = substr($postfield, 0, -1);
-           curl_setopt_array($curl, array(
-           CURLOPT_URL => $url,
-           CURLOPT_RETURNTRANSFER => true,
-           CURLOPT_ENCODING => "",
-           CURLOPT_MAXREDIRS => 10,
-           CURLOPT_TIMEOUT => 45,
-           CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-           CURLOPT_CUSTOMREQUEST => "POST",
-           CURLOPT_POSTFIELDS => $postfield,
-           CURLOPT_SSL_VERIFYPEER => false,
-           CURLOPT_HTTPHEADER => array(
-           "cache-control: no-cache",
-           "content-type: application/x-www-form-urlencoded",
-           ),
-           ));
-           $response = curl_exec($curl);
-           $err = curl_error($curl);
-           curl_close($curl);
-           if ($err) {
-           throw new Exception("cURL Error #:" . $err);
-           return $err;
-           } else {
-           return $response;
-           }
-           } catch (Exception $e) {
-           throw new Exception($e);
-           }
-          }
-          $time = Carbon::now();
-          $temps = date("YmdHis");
-        $params = array('cpm_amount' => '100',
-                        'cpm_currency' => 'CFA',
-                        'cpm_site_id' => '535040',
-                        'cpm_trans_id' => $temps,
-                        'cpm_trans_date' => $time,
-                        'cpm_payment_config' => 'SINGLE',
-                        'cpm_page_action' => 'PAYMENT',
-                        'cpm_version' => 'V1',
-                        'cpm_language' => 'fr',
-                        'cpm_designation' => 'Vote',
-                        'apikey' => '134714631658c289ed716950.86091611',
-                        );
-        $url = "https://api.cinetpay.com/v1/?method=getSignatureByPost";
-        //Appel de fonction postData()
-        $resultat = postData($params, $url) ;
-        $signature = json_decode($resultat, true);
-        $status = 1;
-
-
-        /*return view('misses.show',['miss' => $miss,
-                                   'signature' => str_replace('"',"",$resultat),
-                                   'temps' => $temps,
-                                   'time' => $time,
-                                   'status' => $status
-                                 ]);*/
-        return redirect('misses')->with('status', 'Votre vote a bien été enregistré !');
-    }
 
     /**
      * Store a newly created resource in storage.
