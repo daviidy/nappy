@@ -43,7 +43,7 @@
             </div>
             <div class="col-md-6">
               <!--https://secure.cinetpay.com/-->
-              <form method="post" enctype="multipart/form-data" action="">
+              <form method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div style="display: none;" class="form-group">
                   <select class="" name="cpm_trans_id">
