@@ -7,6 +7,7 @@ use App\Miss;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Routing\UrlGenerator;
 
 class VoteController extends Controller
 {
@@ -32,6 +33,16 @@ class VoteController extends Controller
     }
 
     public function voting(Miss $miss)
+    {
+      if (URL::previous() !== "https://cinetpay.com/notifypay") {
+      return redirect('misses');
+      }
+
+      return redirect('true')->with('miss', $miss);
+
+    }
+
+    public function true()
     {
       $vote=Vote::create([
                         'miss_id' => $miss->id,

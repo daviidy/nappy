@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('true', 'VoteController@true')->name('true');
+
 Route::get('/', function () {
     return redirect('misses');
 });
@@ -23,9 +25,7 @@ Route::get('/ticket-recu', function () {
 
 Route::get('/classement', 'MissController@classement');
 
-Route::post('voting/{miss}', function () {
-    return view('misses.index');
-});
+Route::post('voting/{miss}', 'VoteController@voting');
 
 Route::post('achat', 'TicketController@achat');
 
