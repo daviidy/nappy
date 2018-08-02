@@ -23,6 +23,34 @@
     <link rel="stylesheet" href="/edu/style2.css">
 
     <title>Minaci 2018</title>
+
+    <script type="text/javascript">
+
+    jQuery(document).ready(function($) {
+
+      if (window.history && window.history.pushState) {
+
+        $(window).on('popstate', function() {
+          var hashLocation = location.hash;
+          var hashSplit = hashLocation.split("#!/");
+          var hashName = hashSplit[1];
+
+          if (hashName !== '') {
+            var hash = window.location.hash;
+            if (hash === '') {
+              alert('Back button was pressed.');
+                window.location='misses';
+                return false;
+            }
+          }
+        });
+
+        window.history.pushState('forward', null, './#forward');
+      }
+
+    });
+
+    </script>
   </head>
   <body>
     @if (session('status'))
