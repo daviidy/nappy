@@ -18,6 +18,8 @@ Route::get('/', function () {
 
 Route::get('/classement', 'MissController@classement');
 
+Route::get('/header', 'VoteController@header')->name('header');
+
 Route::post('voting/{miss}', 'VoteController@voting');
 
 Route::post('achat', 'TicketController@achat');

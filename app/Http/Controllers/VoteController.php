@@ -42,9 +42,14 @@ class VoteController extends Controller
       $miss->nombre_de_votes = $miss->votes->count();
       $miss->save();
 
+      return redirect('header');
+
+
+    }
+
+    public function header()
+    {
       return redirect('misses')->with('status', 'Votre vote a bien été enregistré. Mais vous pouvez voter encore !');
-
-
     }
 
 
