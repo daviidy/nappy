@@ -56,8 +56,7 @@ class VoteController extends Controller
      */
     public function store(Request $request)
     {
-        $vote=Vote::create($request->all());
-        return back()->with('status', 'Le vote a bien été enregistré');
+
     }
 
     /**

@@ -15,11 +15,6 @@ Route::get('/', function () {
     return redirect('misses');
 });
 
-Route::get('send', 'MailController@send');
-
-Route::get('/ticket-recu', function () {
-    return view('tickets.show');
-});
 
 Route::get('/classement', 'MissController@classement');
 
