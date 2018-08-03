@@ -64,10 +64,10 @@
   <form method="post" class="form-inline" enctype="multipart/form-data" action="{{ route('tickets.store') }}">
     {{ csrf_field() }}
     <div class="form-group">
-      <input type="text" name="name" class="form-control" placeholder="Prénom">
+      <input type="text" name="name" class="form-control" placeholder="Prénom" required>
     </div>
     <div class="form-group">
-      <input type="email" name="email" class="form-control" placeholder="Email">
+      <input type="email" name="email" class="form-control" placeholder="Email" required>
     </div>
     <button type="submit" class="btn btn-primary">Acheter</button>
   </form>
