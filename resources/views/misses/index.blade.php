@@ -46,7 +46,7 @@
           <img src="/img/photos/{{$miss->image}}" class="img-responsive">
           <figcaption>
             <h3>{{$miss->prenoms}} {{$miss->nom}}</h3>
-            <h5>{{$miss->votes->count()}} vote(s)</h5><br>
+            <h5>{{$miss->nombre_de_votes}} vote(s)</h5><br>
             <p style="color: #fff;">Cliquez pour voter</p>
           </figcaption>
           <a href="{{url('misses', $miss)}}"></a>

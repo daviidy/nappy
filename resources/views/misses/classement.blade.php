@@ -54,7 +54,7 @@
 							<div class="miss-name">{{$miss->prenoms}}</div>
 							<div class="miss-surname">{{$miss->nom}}</div>
 						</div>
-						<span class="miss-rank">{{$miss->votes->count()}} vote(s)</span>
+						<span class="miss-rank">{{$miss->nombre_de_votes}} vote(s)</span>
 					</div>
 				</div>
         @endforeach
