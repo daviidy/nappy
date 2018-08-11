@@ -88,11 +88,11 @@
       </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav" style="margin-top: 5px;">
+  <!--    <ul class="nav navbar-nav" style="margin-top: 5px;">
         <li class="nav-item">
           <a class="nav-link" href="/classement"><span class="fa fa-list"></span> Voir le classement</a>
         </li>
-        <!--<li class="nav-item">
+        <li class="nav-item">
         <div id="custom-search-input">
           <form class="form-inline" action="#" method="POST">
            <div class="input-group col-md-12">
@@ -105,8 +105,8 @@
            </div>
          </form>
        </div>
-     </li> -->
-      </ul>
+     </li>
+      </ul>-->
     </div>
   </div>
 </nav>
